@@ -1,0 +1,7 @@
+{
+    "cmake.configureOnEdit": false,
+    "cmake.generator": "Unix Makefiles",
+    "cmake.configureArgs": [
+        "-DENABLE_TEST=1"
+    ]
+}
