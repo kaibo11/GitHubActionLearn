@@ -1,7 +1,14 @@
-cmake_minimum_required(VERSION 3.5)
-
+cmake_minimum_required(VERSION 3.20)
 project(GithubActionLearn)
 
-aux_source_directory(src sourceFiles)
+enable_testing()
 
-add_executable(${PROJECT_NAME} ${sourceFiles})
+set(CMAKE_CXX_STANDARD 14)
+
+include_directories(${CMAKE_CURRENT_LIST_DIR})
+
+add_subdirectory(src)
+
+if(${ENABLE_TEST})
+    add_subdirectory(test)
+endif()
