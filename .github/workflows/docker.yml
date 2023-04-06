@@ -9,7 +9,7 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
       - name: ls
-        run: ls /home/runner/work/GitHubActionLearn/
+        run: ls /home/runner/work/GitHubActionLearn/GitHubActionLearn
       - name: Install Linux deps
         run: docker build . -t mynginx:1.0
       
