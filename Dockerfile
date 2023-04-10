@@ -1,2 +1,2 @@
-FROM ubuntu:20.04
-RUN echo "haha"
+FROM debian:9
+RUN whoami
