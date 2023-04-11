@@ -17,9 +17,9 @@ jobs:
           docker build . -t mynginx:1.0
       - name: Clang-format check
         run: |
-            docker run --rm --user "$(id -u):$(id -g)" -i -v ${{ github.workspace }}:/home/wasm-compiler mynginx:1.0 bash -c \'
+            docker run --rm --user "$(id -u):$(id -g)" -i -v ${{ github.workspace }}:/home/wasm-compiler mynginx:1.0 bash -c '
                 echo "hahaaaaa"
-            \'
+            '
 
 
       
