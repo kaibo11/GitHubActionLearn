@@ -14,5 +14,6 @@ jobs:
       - name: Install Linux deps
         run: | 
           docker build . -t mynginx:1.0
+          docker images
           docker build . -t mynginx:1.0
       
