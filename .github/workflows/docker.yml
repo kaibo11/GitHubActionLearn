@@ -13,7 +13,8 @@ jobs:
         run: ls /home/runner/work/GitHubActionLearn/GitHubActionLearn
       - name: Install Linux deps
         run: | 
-          docker images
+          docker \
+          images
           docker build . -t mynginx:1.0
       - name: Clang-format check
         run: |
