@@ -16,6 +16,12 @@ jobs:
           context: .
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      - uses: docker/login-action@v2
+      - name: Login to GitHub Container Registry
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: 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
 
 
       
