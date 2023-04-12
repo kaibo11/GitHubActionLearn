@@ -20,6 +20,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: docker test
+        run: |
+          docker images
 
 
       
