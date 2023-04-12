@@ -16,7 +16,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           tags: name/app:latest
-          load: true
       - uses: docker/login-action@v2
         with:
           registry: ghcr.io
