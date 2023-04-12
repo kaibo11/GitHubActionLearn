@@ -3,6 +3,7 @@ name: CMake
 on:
   pull_request:
     branches: ["main","test"]
+  workflow_dispatch:
 jobs:
   build:
     runs-on: [ubuntu-latest]
