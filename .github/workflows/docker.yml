@@ -24,7 +24,7 @@ jobs:
           cache-to: |
                       type=registry,ref=ghcr.io/app:cache,mode=max
                       type=gha,mode=max
-          tags: app:latest
+          tags: name/app:latest
           push: true
       - name: docker test
         run: |
