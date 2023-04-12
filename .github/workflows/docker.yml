@@ -25,7 +25,6 @@ jobs:
                       type=registry,ref=ghcr.io/app:cache,mode=max
                       type=gha,mode=max
           tags: app:latest
-          load: true
           push: true
       - name: docker test
         run: |
