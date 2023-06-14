@@ -16,14 +16,10 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - name: Install Linux deps
-        if: runner.os == 'Linux'
-
-        run: sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make -j $(nproc) && sudo cp ./lib/*.a /usr/lib
-      - name: Install macos deps
-        if: runner.os == 'macOS'
-        run: brew install googletest
-
+      - name: Test shell
+        if: runner.os == 'Windows'
+        run: |
+          if ('a' == 'b') echo "b"
       - name: Install windows deps
         if: runner.os == 'Windows'
         run: |
