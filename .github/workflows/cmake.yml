@@ -2,15 +2,19 @@ name: CMake
 
 on:
   push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+    tags:
+      - v1.**
 
 jobs:
   release-project:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
 #       - name: Archive content
 #         uses: thedoctor0/zip-release@master
 #         with:
@@ -22,9 +26,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-      - name: upload asset to Github
-        uses: actions/upload-release-asset@v1
+          release_name: Release${{ github.ref }}
+      - name: check
+        working-directory: ${{ github.workspace }}
+        run: |
+          ls
+          pwd
+          echo ${{ github.workspace }}/src/
+      - name: Upload Release Assets
+        uses: alexellis/upload-assets@0.4.0
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         with:
-          upload_url: ${{ steps.createRelease.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/src/*
+          asset_paths: '["./src/*"]'
