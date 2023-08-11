@@ -1,7 +1,7 @@
 name: CMake
 
 on:
-  push:
+  create:
     tags:
       - v1.**
 
@@ -19,23 +19,25 @@ jobs:
 #         uses: thedoctor0/zip-release@master
 #         with:
 #            filename: src/main.cpp
-      - name: create release
-        id: createRelease
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release${{ github.ref }}
-      - name: check
-        working-directory: ${{ github.workspace }}
-        run: |
-          ls
-          pwd
-          echo ${{ github.workspace }}/src/
-      - name: Upload Release Assets
-        uses: alexellis/upload-assets@0.4.0
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        with:
-          asset_paths: '["./src/*"]'
+      - name: print event name
+        run: echo ${{ github.event_name }}
+      # - name: create release
+      #   id: createRelease
+      #   uses: actions/create-release@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     tag_name: ${{ github.ref }}
+      #     release_name: Release${{ github.ref }}
+      # - name: check
+      #   working-directory: ${{ github.workspace }}
+      #   run: |
+      #     ls
+      #     pwd
+      #     echo ${{ github.workspace }}/src/
+      # - name: Upload Release Assets
+      #   uses: alexellis/upload-assets@0.4.0
+      #   env:
+      #     GITHUB_TOKEN: ${{ github.token }}
+      #   with:
+      #     asset_paths: '["./src/*"]'
