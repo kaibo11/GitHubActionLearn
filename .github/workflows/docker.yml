@@ -15,7 +15,9 @@ jobs:
       - uses: docker/setup-buildx-action@v1
       - name: test
         id: test1
-        run: git diff origin/test -- ./src
+        run: |
+          git diff origin/test -- ./src
+          git log
       - uses: actions/upload-artifact@v3
         with:
           name: my-artifact
