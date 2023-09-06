@@ -5,10 +5,17 @@ on:
   pull_request:
     branches: ["main","test"]
   workflow_dispatch:
+env:
+  buildCmakeArgs: '["-DCMAKE_BUILD_TYPE:STRING=Debug -DBUILD_TEST=1", "-DCMAKE_BUILD_TYPE:STRING=Release -DBUILD_TEST=1"]'
 jobs:
   x86build:
     runs-on: [ubuntu-latest]
     steps:
+      - name: test xx
+        run: |
+          echo '${{ env.buildCmakeArgs }}' | jq -r '.[]' | while IFS= read -r item; do
+              echo "$item"
+          done
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
